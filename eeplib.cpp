@@ -22,21 +22,7 @@ bool _raw_switch_slot(uint8_t ubSlot);
 bool _raw_switch_slotL2(uint8_t ubSlot);
 bool _raw_read_smbus(SMBUS_ACCESS *devcmd);
 bool _raw_write_smbus(SMBUS_ACCESS *devcmd);
-bool _check_smbus_busy(SMBUS_IO *smbusio);
-void xdelay(int loop);
-
-/***************************************************************/
-void _xmsdelay(int32_t ms)
-{
-struct timeval tvStart, tvEnd;
-bool fEnding = false;	
-double x1,x2;
-	
-	gettimeofday(&tvStart, NULL);
-	x1 = (double)(tvStart.tv_sec * 1000000 + tvStart.tv_usec) / 1000;
-	while (!fEnding) {
-		gettimeofday(&tvEnd, NULL);
-		x2 = (double)(tvEnd.tv_sec * 1000000 + tvEnd.tv_usec) / 1000;
+1000;
 		if ( (x2-x1) >= ms ) fEnding = true;
 	}	
 }
